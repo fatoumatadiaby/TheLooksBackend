@@ -4,38 +4,39 @@ class LooksController < ApplicationController
   # GET /looks
   def index
     @looks = Look.all
-
-    render json: @looks
+    render json: LookSerializer.new(@looks)
   end
 
   # GET /looks/1
   def show
-    render json: @look
+    render json: LookSerializer.new(@look)
   end
 
   # POST /looks
   def create
-    @look = Look.new(look_params)
+    look = Look.new(look_params)
 
     if @look.save
-      render json: @look, status: :created, location: @look
+    render json: LookSerializer.new(look), status: :created, location: look
     else
-      render json: @look.errors, status: :unprocessable_entity
+      render json: {errors: look.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /looks/1
   def update
-    if @look.update(look_params)
-      render json: @look
+    if look.update(look_params)
+      render json: LookSerializer.new(look), status: :accepted
+     
     else
-      render json: @look.errors, status: :unprocessable_entity
+      render json: {errors: look.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # DELETE /looks/1
   def destroy
     @look.destroy
+    render json: LookSerializer.new(look)
   end
 
   private

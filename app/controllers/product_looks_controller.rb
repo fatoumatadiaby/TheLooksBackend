@@ -4,38 +4,38 @@ class ProductLooksController < ApplicationController
   # GET /product_looks
   def index
     @product_looks = ProductLook.all
-
-    render json: @product_looks
-  end
+    render json: ProductLookSerializer.new(@product_looks) 
+   end
 
   # GET /product_looks/1
   def show
-    render json: @product_look
+    render json: ProductLookSerializer.new(@product_look) 
   end
 
   # POST /product_looks
   def create
-    @product_look = ProductLook.new(product_look_params)
+    product_look = ProductLook.new(product_look_params)
 
-    if @product_look.save
-      render json: @product_look, status: :created, location: @product_look
+    if product_look.save
+      render json: ProductLookSerializer.new(user), status: :created, location: product_look
     else
-      render json: @product_look.errors, status: :unprocessable_entity
+      render json: {errors: product_look.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /product_looks/1
   def update
-    if @product_look.update(product_look_params)
-      render json: @product_look
+    if product_look.update(product_look_params)
+      render json: ProductLookSerializer.new(user), status: :accepted
     else
-      render json: @product_look.errors, status: :unprocessable_entity
+      render json: {errors: product_look.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # DELETE /product_looks/1
   def destroy
     @product_look.destroy
+    render json: ProductLookSerializer.new(user)
   end
 
   private

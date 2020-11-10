@@ -5,37 +5,38 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
 
-    render json: @products
+    render json: ProductSerializer.new(@products)
   end
 
   # GET /products/1
   def show
-    render json: @product
+    render json: ProductSerializer.new(@product)
   end
 
   # POST /products
   def create
-    @product = Product.new(product_params)
+    product = Product.new(product_params)
 
     if @product.save
-      render json: @product, status: :created, location: @product
+      render json: ProductSerializer.new(product), status: :created, location: product
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /products/1
   def update
-    if @product.update(product_params)
-      render json: @product
+    if product.update(product_params)
+    render json: ProductSerializer.new(product), status: :accepted
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # DELETE /products/1
   def destroy
     @product.destroy
+    render json: ProductSerializer.new(product)
   end
 
   private
