@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+<!-- # fetch('http://localhost:300/api/v1') -->
