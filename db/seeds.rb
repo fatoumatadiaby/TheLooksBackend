@@ -17,4 +17,9 @@ Product.create(category: "Footwear", product_name: "Santos Naked Sandals", price
 Product.create(category: "Footwear",  product_name: "Candys Line Cork Flip Flops", price: "50.00", store: "Everything But Water", Url: "https://www.everythingbutwater.com/products/asportuguesas/footwear/p018049000/candys-line-cork-flip-flops/98216")
 Product.create(category: "Footwear",  product_name: "Salon Slide Sandals", price: "308.00", store: "Everything But Water", Url: "https://www.everythingbutwater.com/products/carrie-forbes/footwear/salon/salon-slide-sandals/81290")
 
-Look.create(title: "this is a look")
+ProductLook.create(look_id: 1, product_id:1)
+ProductLook.create(look_id: 1, product_id:5)
+ProductLook.create(look_id: 1, product_id:8)
+
+Look.create(title: "Summer Look", note: "this look is for Fatima", date: "November 17, 2020" )
+Look.create(title: "Beach Look", note: "this look is for David", date: "November 16, 2020" )
