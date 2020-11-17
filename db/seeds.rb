@@ -16,3 +16,5 @@ Product.create(category: "Coverups",  product_name: "EBW X Vitamin A Shirt Dress
 Product.create(category: "Footwear", product_name: "Santos Naked Sandals", price: "129.00", store: "Everything But Water", Url: "https://www.everythingbutwater.com/products/kaanas/footwear/c00027r/santos-naked-sandals/98698")
 Product.create(category: "Footwear",  product_name: "Candys Line Cork Flip Flops", price: "50.00", store: "Everything But Water", Url: "https://www.everythingbutwater.com/products/asportuguesas/footwear/p018049000/candys-line-cork-flip-flops/98216")
 Product.create(category: "Footwear",  product_name: "Salon Slide Sandals", price: "308.00", store: "Everything But Water", Url: "https://www.everythingbutwater.com/products/carrie-forbes/footwear/salon/salon-slide-sandals/81290")
+
+Look.create(title: "this is a look")

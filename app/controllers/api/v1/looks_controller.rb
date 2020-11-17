@@ -16,7 +16,7 @@ class Api::V1::LooksController < ApplicationController
   def create
     look = Look.new(look_params)
 
-    if @look.save
+    if look.save
     render json: LookSerializer.new(look), status: :created, location: look
     else
       render json: {errors: look.errors.full_messages}, status: :unprocessable_entity
@@ -47,6 +47,6 @@ class Api::V1::LooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def look_params
-      params.require(:look).permit(:title, :note, :date, :user_id)
+      params.require(:look).permit(:title, :note, :date)
     end
 end
