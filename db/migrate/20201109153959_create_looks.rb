@@ -4,7 +4,6 @@ class CreateLooks < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :note
       t.date :date
-      t.references :user, foreign_key: true
 
       t.timestamps
     end

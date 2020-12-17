@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   # get "/api/v1/login", to: "sessions#create"
-  namespace :api do
-    namespace :v1 do
-     resources :product_looks
-     resources :looks
-     resources :products
-     resources :users 
+  # namespace :api do
+  #   namespace :v1 do
+    resources :looks do
+      resources :products 
     end
-  end
+    resources :products, only: [:destroy]
 end
